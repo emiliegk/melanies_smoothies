@@ -1,6 +1,7 @@
 # Custom Smoothie Order Form with Snowflake integration
 # Co-authored with CoCo
 # Import python packages
+import requests
 import streamlit as st
 import os
 from snowflake.snowpark.functions import col
@@ -55,3 +56,5 @@ if ingredients_list:
         session.sql(my_insert_stmt).collect()
         st.success('Your Smoothie is ordered, '+name_on_order+'!', icon="✅")
     
+smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
+st.text(smoothiefroot_respone)
