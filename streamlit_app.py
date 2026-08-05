@@ -3,7 +3,6 @@
 # Import python packages
 import streamlit as st
 import os
-from snowflake.snowpark.context import get_active_session
 from snowflake.snowpark.functions import col
 
 
@@ -15,8 +14,8 @@ st.write(
 )
 
 # Create a database connection to Snowflake
-conn = st.connection("snowflake", ttl=os.getenv("SNOWFLAKE_CONNECTION_TTL"))
-session = conn.session()
+cnx = st.connection("snowflake")
+session = cnx.session()
 session.use_database("SMOOTHIES")
 session.use_schema("PUBLIC")
 
